@@ -1,0 +1,23 @@
+1. source env variable from variable.sh
+source variable.sh
+
+2. creating a bucket using aws-cli
+aws s3 mb s3://${bucket_name}
+
+3. creating kops  config with all the required paramters
+kops create cluster \
+    --name ${KOPS_CLUSTER_NAME} \
+    --cloud aws \
+    --master-size ${KOPS_MASTER_SIZE} \
+    --master-zones ap-southeast-1a  \
+    --node-count ${KOPS_NODE_COUNT} \
+    --node-size ${KOPS_NODE_SIZE} \
+    --zones ap-southeast-1a,ap-southeast-1b \
+    --dns-zone ${KOPS_DNS_ZONE} \
+    --dns private \
+    --networking flannel-vxlan \
+    --ssh-public-key kops_rsa.pub \
+    --vpc #$#$ \
+    --subnets subnet-*****,subnet-***** \
+    --out k8s \
+    --target=terraform

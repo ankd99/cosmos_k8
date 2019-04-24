@@ -1,0 +1,3 @@
+1. k8s cluster is created using kops.
+2. intention is to maintain cluster with terraform(IAAC) hence throwing output to terraform using flag --terraform.
+3. networking used is flannel and private hosted zone is being used.
